@@ -19,6 +19,7 @@ while 1:
 
             
 def hour_ending(a):
+    ending = ''
     if (a>=5 and a<=20) or a == 0:
         ending = 'ов'
     if (a>= 2 and a<=4) or (a>= 22 and a<=23):
