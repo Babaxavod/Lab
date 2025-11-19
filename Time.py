@@ -1,27 +1,3 @@
-print('Введите ДВА числа через ОДИН пробел в ОДНУ строчку, первое число - часы, от 0 до 23 включительно. второе - минуты, от 0 до 59 включительно')
-#вывод правил ввода
-while 1:
-    vvod = list(map(str,input().split()))
-    if len(vvod)!= 2:
-        print('введите ДВА элемента')
-    else:
-        if vvod[0].isdigit() and vvod[1].isdigit():
-            if int(vvod[0])>=0 and int(vvod[0])<24 and int(vvod[1])>=0 and int(vvod[1])<60:
-                #print('ввод принят')
-                hour = int(vvod[0])
-                min = int(vvod[1])
-                break
-            else:
-                print('введите числа в заданном диапазоне')
-                if not(int(vvod[0])>=0 and int(vvod[0])<24):
-                    print('часы должны быть больше 0 и меньше 24')
-                if not(int(vvod[1])>=0 and int(vvod[1])<60):
-                    print('минуты должны быть больше 0 и меньше 60') 
-        else:
-            print('ввдедите целые числа')
-#ввод и проверка его на правильность
-
-            
 def hour_ending(a):
     ending = ''
     if (a>=5 and a<=20) or a == 0:
@@ -42,21 +18,45 @@ def minut_ending(a):
 #функция для определения окончаний минут
 
 
-if hour>=0 and hour<6:
-    time = 'ночи'
-if hour>=6 and hour<12:
-    time = 'утра'
-if hour>=12 and hour<18:
-    time = 'дня'
-if hour>=18 and hour<24:
-    time = 'вечера'
-#опреденеие времени суток
-
-    
+print('Введите ДВА числа через ОДИН пробел в ОДНУ строчку, первое число - часы, от 0 до 23 включительно. второе - минуты, от 0 до 59 включительно')
+#вывод правил ввода
+rep = True
+while rep:
+    vvod = list(map(str,input().split()))
+    if len(vvod)!= 2:
+        print('введите ДВА элемента')
+    else:
+        if vvod[0].isdigit() and vvod[1].isdigit():
+            if int(vvod[0])>=0 and int(vvod[0])<24 and int(vvod[1])>=0 and int(vvod[1])<60:
+                #print('ввод принят')
+                hour = int(vvod[0])
+                min = int(vvod[1])
+                rep = False
+            else:
+                print('введите числа в заданном диапазоне')
+                if not(int(vvod[0])>=0 and int(vvod[0])<24):
+                    print('часы должны быть больше 0 и меньше 24')
+                if not(int(vvod[1])>=0 and int(vvod[1])<60):
+                    print('минуты должны быть больше 0 и меньше 60') 
+        else:
+            print('ввдедите целые числа')
+#ввод и проверка его на правильность
 if hour == 0 and min == 0:
     print('полночь')
 elif hour == 12 and min == 0:
     print('полдень')
+else:
+    if hour>=0 and hour<6:
+        time = 'ночи'
+    if hour>=6 and hour<12:
+        time = 'утра'
+    if hour>=12 and hour<18:
+        time = 'дня'
+    if hour>=18 and hour<24:
+        time = 'вечера'
+#опреденеие времени суток
+
+    
 else:
     if min == 0:
         print(hour, ' час',hour_ending(hour), ' ', time, ' ровно', sep = '')
