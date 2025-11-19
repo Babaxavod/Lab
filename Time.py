@@ -40,11 +40,15 @@ while rep:
                     print('минуты должны быть больше 0 и меньше 60') 
         else:
             print('ввдедите целые числа')
+end = True
 #ввод и проверка его на правильность
 if hour == 0 and min == 0:
     print('полночь')
+    end = False
 elif hour == 12 and min == 0:
     print('полдень')
+    end = False
+    
 else:
     if hour>=0 and hour<6:
         time = 'ночи'
@@ -57,7 +61,7 @@ else:
 #опреденеие времени суток
 
     
-else:
+if end:
     if min == 0:
         print(hour, ' час',hour_ending(hour), ' ', time, ' ровно', sep = '')
     else:
