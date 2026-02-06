@@ -1,0 +1,90 @@
+import time
+import random
+print("выберите режим работы демонстрационный (1) или основной (2)")
+print("для начала работы введите целое число")
+def input_cek(list_nornal_elements):
+	correct = False
+	while correct == False:
+		a = input()
+		if a in list_nornal_elements :
+			print("ввод принят")
+			return int(a)
+			correct = True
+		else:
+			print("ввод некоректен введите ещё раз ")
+first_test = input_cek(["1","2"])
+if first_test == 1:
+	demo = True
+else: 
+	demo = False
+
+a = []		
+if demo:
+		count = random.randint(5,30)
+		print('возьмём ', count, "целых чисел в диапозоне от -100 до 100")
+		for i in range(count):
+			a.append(random.randint(-100, 100))
+		print(*a, ' вот эти числа ')
+else:
+		print('введите количесиво элементов в массиве')
+		c = input()
+		correct = False
+		while correct == False:
+			if c.isdigit() :
+				print('ввод принят')
+				correct = True
+			else: 
+				print('ввод некоректен. ')
+		while int(c) >= len(a) +1:
+				b = input()
+				if b.isdigit():
+					a.append(b)
+				else:
+					print('ввод некоректен')
+		print(*a, 'введённые числа')		
+		
+print ('\n')
+print('\n')	
+print('выберите режим сортировки')
+print('1. сортировка выбором')
+print('2. сортировка пузырьком ')
+print('3. сортировка сортом')
+
+second_test = input_cek(["1","2","3"])
+
+		
+def bubble_sort(b):
+	sorted = False
+	while sorted == False:
+		count_of_correcting = 0
+		for i in range (len(b)-1):
+			if b[i] >b[i+1]:
+				b[i], b[i+1] = b[i+1], b[i]
+				count_of_correcting +=1
+		if count_of_correcting == 0:
+			sorted = True 
+	return b
+		
+def min_sort (b):
+	rez = []
+	for i in range(len(b)):
+		rez.append(a.pop(a.index(min(b))))
+	return (rez)
+	
+def eazy_sort(a):
+	return sorted(a)
+
+start_time = time.perf_counter()			
+if second_test == 1:
+	print(*min_sort(a))
+	end_time = time.perf_counter()
+if second_test == 2:
+	print(*bubble_sort(a))
+	end_time = time.perf_counter()
+if second_test == 3:
+	print(*eazy_sort(a))
+	end_time = time.perf_counter()
+	
+print('время выполнения')
+print((end_time - start_time)*1000000)
+print('микросекунд')
